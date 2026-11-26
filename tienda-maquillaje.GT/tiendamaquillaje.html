@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Obsidiana · Tienda de maquillaje</title>
+  <meta name="description" content="Obsidiana: rubores, labiales, máscaras de pestañas, delineadores y sombras en tonos pastel. Envíos a todo el país.">
+
+  <!-- Tipografías (Google Fonts): Pacifico (logo), Fraunces (títulos) y Plus Jakarta Sans (textos y precios) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,600&family=Pacifico&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos: todo el CSS vive en este archivo externo -->
+  <link rel="stylesheet" href="tiendamaquillaje.css">
+</head>
+<body>
+
+  <!-- ===== 1) FRANJA SUPERIOR: promos y envíos ===== -->
+  <div class="topbar" role="region" aria-label="Promociones">
+    <ul class="topbar__list">
+      <li>🚚 Envíos gratis a todo el país desde $60.000</li>
+      <li>💳 3 cuotas sin interés con tarjetas seleccionadas</li>
+      <li>✨ 10% OFF pagando por transferencia</li>
+    </ul>
+  </div>
+
+  <!-- ===== 2) CABECERA: logo a la izquierda, favoritos y carrito a la derecha ===== -->
+  <header class="header">
+    <div class="header__inner">
+      <a href="#inicio" class="brand" aria-label="Obsidiana, ir al inicio">
+        <span class="brand__gem" aria-hidden="true">◆</span>
+        <span class="brand__name">Obsidiana</span>
+      </a>
+
+      <div class="header__actions">
+        <!-- Contador de favoritos (lo actualiza tiendamaquillaje.js) -->
+        <button class="counter" id="favCounter" type="button" aria-label="Favoritos">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.1C.9 8.6 2.7 5 6.2 5c2 0 3.2 1 3.8 2 .6-1 1.8-2 3.8-2 3.5 0 5.3 3.6 3.8 6.9C19.5 16.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <span class="counter__label">Favoritos</span>
+          <span class="counter__badge" id="favCount">0</span>
+        </button>
+
+        <!-- Contador de carrito -->
+        <button class="counter" id="cartCounter" type="button" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1.5 1.5 0 0 1-1.5 1.3H7.7a1.5 1.5 0 0 1-1.5-1.3L5 8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="counter__label">Carrito</span>
+          <span class="counter__badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== 3) BARRA DE NAVEGACIÓN ===== -->
+    <nav class="nav" aria-label="Categorías">
+      <ul class="nav__list">
+        <li><a href="#catalogo" data-nav="catalogo">Maquillaje</a></li>
+        <li><a href="#consejos" data-nav="consejos">Consejos</a></li>
+        <li><a href="#rubor" data-nav="rubor">Rubor</a></li>
+        <li><a href="#labiales" data-nav="labiales">Labiales</a></li>
+        <li><a href="#mascaras" data-nav="mascaras">Máscara de pestañas</a></li>
+        <li><a href="#delineadores" data-nav="delineadores">Delineadores</a></li>
+        <li><a href="#sombras" data-nav="sombras">Sombra de ojos</a></li>
+        <li><a href="#tendencia" data-nav="tendencia" class="nav__trend">✦ Tendencia</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ===== BIENVENIDA ===== -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="hero__eyebrow">Bienvenida a Obsidiana</p>
+        <h1 class="hero__title">Maquillaje que brilla <em>con vos</em></h1>
+        <p class="hero__lead">Colores suaves, texturas livianas y looks para todos los días.</p>
+        <a class="btn btn--primary" href="#tendencia">Ver tendencias</a>
+      </div>
+
+      <!-- Frases temáticas pedidas -->
+      <ul class="hero__phrases" aria-label="Nuestras colecciones">
+        <li class="phrase phrase--pink">Rostro y piel</li>
+        <li class="phrase phrase--lilac">Mirada magnética</li>
+        <li class="phrase phrase--coral">Labios con estilo</li>
+        <li class="phrase phrase--yellow">Novedades</li>
+        <li class="phrase phrase--lilac">Edición limitada</li>
+        <li class="phrase phrase--pink">Básicos infaltables</li>
+      </ul>
+    </section>
+
+    <!-- ===== PORTADAS + CONSEJOS (destino del enlace "Consejos") ===== -->
+    <section class="covers" id="consejos">
+      <header class="section-head">
+        <h2 class="section-title">Portadas y consejos</h2>
+        <p class="section-sub">Inspirate con cada colección y llevate el truco de nuestras maquilladoras.</p>
+      </header>
+      <!-- Las portadas se generan desde tiendamaquillaje.js -->
+      <div class="covers__grid" id="coversGrid"></div>
+    </section>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section class="catalog" id="catalogo">
+      <header class="section-head">
+        <h2 class="section-title">Maquillaje</h2>
+        <p class="section-sub">Elegí una categoría o mirá todo el catálogo.</p>
+      </header>
+
+      <!-- Filtros por categoría -->
+      <div class="filters" role="group" aria-label="Filtrar productos">
+        <button class="chip is-active" type="button" data-filter="todo">Todo</button>
+        <button class="chip" type="button" data-filter="rubor">Rubor</button>
+        <button class="chip" type="button" data-filter="labiales">Labiales</button>
+        <button class="chip" type="button" data-filter="mascaras">Máscara de pestañas</button>
+        <button class="chip" type="button" data-filter="delineadores">Delineadores</button>
+        <button class="chip" type="button" data-filter="sombras">Sombra de ojos</button>
+        <button class="chip chip--trend" type="button" data-filter="tendencia">✦ Tendencia</button>
+      </div>
+
+      <!-- Cada sección se rellena desde tiendamaquillaje.js -->
+      <section class="category" id="rubor" data-cat="rubor">
+        <h3 class="category__title">Rubor</h3>
+        <div class="grid" data-grid="rubor"></div>
+      </section>
+
+      <section class="category" id="labiales" data-cat="labiales">
+        <h3 class="category__title">Labiales</h3>
+        <div class="grid" data-grid="labiales"></div>
+      </section>
+
+      <!-- Máscaras y delineadores: tarjetas compactas (ver CSS .grid--compact) -->
+      <section class="category" id="mascaras" data-cat="mascaras">
+        <h3 class="category__title">Máscara de pestañas</h3>
+        <div class="grid" data-grid="mascaras"></div>
+      </section>
+
+      <section class="category" id="delineadores" data-cat="delineadores">
+        <h3 class="category__title">Delineadores</h3>
+        <div class="grid" data-grid="delineadores"></div>
+      </section>
+
+      <section class="category" id="sombras" data-cat="sombras">
+        <h3 class="category__title">Sombra de ojos</h3>
+        <div class="grid" data-grid="sombras"></div>
+      </section>
+
+      <section class="category category--trend" id="tendencia" data-cat="tendencia">
+        <h3 class="category__title">✦ Tendencia</h3>
+        <p class="category__note">Los más elegidos del momento, de todas las categorías.</p>
+        <div class="grid grid--trend" data-grid="tendencia"></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__brand">Obsidiana</p>
+    <p>Precios en pesos argentinos (ARS). Se informa el precio sin impuestos nacionales como referencia.</p>
+    <p class="footer__small">© 2026 Obsidiana · Hecho con cariño</p>
+  </footer>
+
+  <!-- ===== PANELES LATERALES: FAVORITOS Y CARRITO (se abren desde el header) ===== -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Panel de favoritos -->
+  <aside class="drawer" id="favDrawer" aria-label="Mis favoritos" aria-hidden="true">
+    <header class="drawer__head">
+      <h2 class="drawer__title">♥ Mis favoritos</h2>
+      <button class="drawer__close" type="button" data-act="close" aria-label="Cerrar favoritos">✕</button>
+    </header>
+    <div class="drawer__body" id="favList"></div>
+    <footer class="drawer__foot">
+      <button class="btn btn--primary btn--full" type="button" data-act="favs-to-cart">Pasar todo al carrito</button>
+    </footer>
+  </aside>
+
+  <!-- Panel de carrito -->
+  <aside class="drawer" id="cartDrawer" aria-label="Mi carrito" aria-hidden="true">
+    <header class="drawer__head">
+      <h2 class="drawer__title">🛍 Mi carrito</h2>
+      <button class="drawer__close" type="button" data-act="close" aria-label="Cerrar carrito">✕</button>
+    </header>
+
+    <!-- Progreso hacia el envío gratis -->
+    <div class="ship">
+      <p class="ship__msg" id="shipMsg"></p>
+      <div class="ship__track"><div class="ship__bar" id="shipBar"></div></div>
+    </div>
+
+    <div class="drawer__body" id="cartList"></div>
+
+    <footer class="drawer__foot">
+      <div class="totals">
+        <div class="totals__row"><span>Total</span><strong id="cartTotal">$0</strong></div>
+        <div class="totals__row totals__row--small"><span>Sin impuestos nacionales</span><span id="cartNet">$0</span></div>
+      </div>
+      <button class="btn btn--primary btn--full" type="button" data-act="checkout">Finalizar compra</button>
+      <button class="btn btn--ghost btn--full" type="button" data-act="clear-cart">Vaciar carrito</button>
+    </footer>
+  </aside>
+
+  <!-- ===== DETALLE DE PRODUCTO: aparece al tocar una tarjeta (lo rellena el JS) ===== -->
+  <div class="modal" id="productModal" role="dialog" aria-modal="true" aria-label="Detalle del producto" aria-hidden="true">
+    <div class="modal__backdrop" data-act="close-modal"></div>
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-act="close-modal" aria-label="Cerrar detalle">✕</button>
+      <div class="modal__media" id="pmMedia"></div>
+      <div class="modal__info" id="pmInfo"></div>
+    </div>
+  </div>
+
+  <!-- Notificaciones visuales -->
+  <div class="toast-zone" id="toastZone" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Lógica: todo el JavaScript vive en este archivo externo -->
+  <script src="tiendamaquillaje.js"></script>
+</body>
+</html>
